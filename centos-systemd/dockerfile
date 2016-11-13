@@ -1,0 +1,8 @@
+FROM centos/systemd
+MAINTAINER "Mutai Josphat" <kiplangatmtai@gmail.com>
+
+RUN yum clean all; yum -y install vim bash-completion 
+
+CMD ["/usr/sbin/init"]
+
+

@@ -1,0 +1,20 @@
+# Listen on all interfaces
+0.0.0.0:80 
+
+log stdout
+errors stdout
+
+# try html, .htm, and .php in order to serve in url path
+ext .html .htm .php
+
+# Some directives
+gzip
+#log /var/log/caddy/caddy.log
+
+kipepeo.co.ke {
+root /var/www/kipepeo
+log ../access.log
+}
+
+#root /var/www/html
+

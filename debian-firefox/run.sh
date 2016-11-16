@@ -8,6 +8,7 @@ docker run -d \
     -e uid=$(id -u) \
     -e gid=$(id -g) \
     -e DISPLAY=$DISPLAY \
+    --tmpfs /tmp \
     -h firefox \
     -d /dev/snd:/dev/snd \
     -d /dev/dri:/dev/dri \
@@ -17,5 +18,4 @@ docker run -d \
     -v $HOME/Documents:$HOME/Documents \
     -v /etc/machine-id:/etc/machine-id:ro \
     jmutai/firefox firefox
-
 

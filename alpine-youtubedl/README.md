@@ -8,7 +8,7 @@ youtube-dl
 
 ```bash
 # create an alias
-$ alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data vimagick/youtube-dl'
+$ alias yt='docker run --rm -u $(id -u):$(id -g) -v $PWD:/data jmutai/youtube-dl'
 
 # list all formats
 $ yt -F nVjsGKrE6E8

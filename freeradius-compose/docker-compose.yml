@@ -1,0 +1,35 @@
+# docker-compose up -d
+ version: '2'
+ services:
+   db:
+     image: mariadb
+     container_name: freeradius-db
+     volumes:
+       - "./db:/var/lib/mysql"
+       - "./db-dump:/docker-entrypoint-initdb.d"
+     restart: on-failure 
+     environment:
+       MYSQL_ROOT_PASSWORD: password
+       MYSQL_DATABASE: radius
+       MYSQL_USER: radius
+       MYSQL_PASSWORD: password
+
+   freeradius:
+     depends_on:
+       - db
+     image: jmutai/freeradius
+     container_name: freeradius
+     volumes:
+       - "~/files/default:/etc/freeradius/sites-available/default"  
+       - "./radiusd.conf:/etc/freeradius/radiusd.conf"
+       - "./sql.conf:/etc/freeradius/sql.conf"
+       - "./inner-tunnel:/etc/freeradius/sites-available/inner-tunnel"
+       - "./clients.conf:/etc/freeradius/clients.conf"
+     links:
+       - db
+     ports:
+       - "80:80"
+     restart: on-failure 
+     environment:
+       WORDPRESS_DB_HOST: db:3306
+       WORDPRESS_DB_PASSWORD: freer

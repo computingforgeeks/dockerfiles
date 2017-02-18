@@ -1,8 +1,8 @@
-IMAGE=mpsyt
+IMAGE=jmutai/mpsyt
 
 .PHONY: all build
 
 all: build
 
 build:
-	docker build --rm -t jmutai/$(IMAGE) .
+	docker build --rm -t $(IMAGE) .

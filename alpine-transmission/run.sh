@@ -13,4 +13,4 @@ docker run -d --name transmission \
 -v /home/$USER/Downloads:/transmission/watch \
 -e "USERNAME=admin" \
 -e "PASSWORD=password" \
-transmission "$@" 
+jmutai/transmission "$@" 
